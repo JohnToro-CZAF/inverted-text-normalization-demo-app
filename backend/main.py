@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template, url_for, abort
 from flask_cors import CORS, cross_origin
-from app.model import Model, get_model
+from app.model import get_model
 
 app = Flask('demo-nemo')
 cors = CORS(app)
