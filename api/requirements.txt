@@ -1,0 +1,4 @@
+cython
+flask
+flask_cors
+nemo_toolkit['all']

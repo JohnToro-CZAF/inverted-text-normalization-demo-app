@@ -1,0 +1,24 @@
+###### Building
+FROM node:alpine as build
+
+RUN mkdir -p /app
+WORKDIR /app
+
+COPY . .
+# RUN npm version --allow-same-version 1.0.0
+RUN npm config set legacy-peer-deps true
+RUN npm ci
+RUN npm run build
+
+ENV NODE_ENV production
+
+# EXPOSE 3000
+
+# # Start the app
+# CMD npm start
+
+# release step
+FROM nginx:1.21.5-alpine as release
+COPY --from=build /app/build /usr/share/nginx/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

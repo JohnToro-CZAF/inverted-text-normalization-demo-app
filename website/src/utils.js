@@ -23,6 +23,5 @@ const useAsyncEndpoint = fn => {
 }
 
 export const postGenerateTextEndpoint = () => {
-    /* eslint-disable react-hooks/rules-of-hooks */
     return useAsyncEndpoint(data => ({ url: ENDPOINT_URL, method: "POST", data }));
 }
