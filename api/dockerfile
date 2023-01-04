@@ -1,0 +1,11 @@
+###### Building
+FROM python:3.9
+WORKDIR /app
+
+COPY . .
+RUN pip3 install Cython
+RUN pip3 install -r requirements.txt
+ENV FLASK_ENV production
+
+EXPOSE 9696
+CMD ["python", "main.py"]
