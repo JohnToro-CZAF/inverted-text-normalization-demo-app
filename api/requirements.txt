@@ -1,4 +1,5 @@
 cython
 flask
 flask_cors
-nemo_toolkit['all']
+pynini
+nemo_toolkit[all]
