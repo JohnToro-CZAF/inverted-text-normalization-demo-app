@@ -1,5 +1,4 @@
 ###### Building
-<<<<<<< HEAD
 FROM ubuntu:20.04
 RUN apt-get update \
 && apt-get upgrade -y \
@@ -11,11 +10,6 @@ RUN apt-get update && apt-get install -y \
     git \
     python3.8 \
     python3-pip
-=======
-FROM python
-WORKDIR /app
->>>>>>> fe9a39392f999aa943960420a2387fd1249535b1
-
 RUN add-apt-repository ppa:deadsnakes/ppa
 
 WORKDIR /app
