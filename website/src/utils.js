@@ -24,4 +24,4 @@ const useAsyncEndpoint = fn => {
 
 export const postGenerateTextEndpoint = () => {
     return useAsyncEndpoint(data => ({ url: ENDPOINT_URL, method: "POST", data }));
-}
+}   

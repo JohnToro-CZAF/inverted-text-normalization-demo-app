@@ -10,6 +10,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 def predict() -> dict:
   data = request.get_json()
+  print(data)
   if 'text' not in data or len(data['text']) == 0 or 'model' not in data:
     abort(400)
   print(data)

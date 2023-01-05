@@ -1,16 +1,15 @@
-version: "3.8"
+version: "0"
 services:
   api:
-    image: "api:latest"
     build:
-      context: .
+      context: ./api
       dockerfile: Dockerfile
-    ports:
-      - "9696:9696"
-    volumes:
-      - .:/app
-    environment:
-      - FLASK_APP=app.py
-      - FLASK_ENV=development
-    command: python main.py
+    ports: [9696:9696]
+    container_name: api
+  client:
+    build:
+      context: ./website
+      dockerfile: Dockerfile
+    ports: [80:80]
+    container_name: web
     

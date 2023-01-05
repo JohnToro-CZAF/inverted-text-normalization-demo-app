@@ -1,11 +1,30 @@
 ###### Building
-FROM python:3.9
+FROM ubuntu:20.04
+RUN apt-get update \
+&& apt-get upgrade -y \
+&& apt-get install -y \
+software-properties-common
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    python3.8 \
+    python3-pip
+
+RUN add-apt-repository ppa:deadsnakes/ppa
+
 WORKDIR /app
-
 COPY . .
-RUN pip3 install Cython
-RUN pip3 install -r requirements.txt
-ENV FLASK_ENV production
 
+RUN python3.8 -m pip install --upgrade pip
+RUN python3.8 -m pip install Cython
+RUN python3.8 -m pip install -r requirements.txt
+RUN python3.8 -m pip install numpy==1.21
+
+RUN apt-get update -y && apt-get install -y --no-install-recommends build-essential gcc \
+                                        libsndfile1
+ENV FLASK_ENV production
 EXPOSE 9696
-CMD ["python", "main.py"]
+
+ENTRYPOINT [ "python3"]
+CMD ["main.py"]
